@@ -78,6 +78,8 @@ export default class CameraRollGallery extends React.PureComponent {
     onPinchTransforming: PropTypes.func,
     onPinchStartReached: PropTypes.func,
     onPinchEndReached: PropTypes.func,
+    onOpenImageViewer: PropTypes.func,
+    onCloseImageViewer: PropTypes.func,
     enableScale: PropTypes.bool,
     enableTranslate: PropTypes.bool,
     resizeMode: PropTypes.string,
@@ -143,10 +145,12 @@ export default class CameraRollGallery extends React.PureComponent {
 
   openImageViewer = async (imageId, index) => {
     await this.setState({ displayImageViewer: true, imageId, galleryInitialIndex: index });
+    this.props.onOpenImageViewer && this.props.onOpenImageViewer({imageId, galleryInitialIndex: index});
   }
 
   closeImageViewer = () => {
     this.setState({ displayImageViewer: false, imageId: undefined });
+    this.props.onCloseImageViewer && this.props.onCloseImageViewer();
   }
 
   onChangePhoto = (imageId, galleryIndex) => {
