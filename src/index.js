@@ -71,6 +71,7 @@ export default class CameraRollGallery extends React.PureComponent {
     onPageLongPress: PropTypes.func,
     renderPageHeader: PropTypes.func,
     renderPageFooter: PropTypes.func,
+    renderChildImageViewer: PropTypes.func,
 
     onDoubleTapConfirmed: PropTypes.func,
     onDoubleTapStartReached: PropTypes.func,
@@ -268,6 +269,7 @@ export default class CameraRollGallery extends React.PureComponent {
                     onPageLongPress={this.props.onPageLongPress}
                     renderPageHeader={this.props.renderPageHeader}
                     renderPageFooter={this.props.renderPageFooter}
+                    renderChild={this.props.renderChildImageViewer}
 
                     onDoubleTapConfirmed={this.props.onDoubleTapConfirmed}
                     onDoubleTapStartReached={this.props.onDoubleTapStartReached}
