@@ -177,6 +177,17 @@ export default class CameraRollGallery extends React.PureComponent {
     });
   }
 
+  renderChildImageViewer = () => {
+    const image = {
+      imageId: this.state.imageId,
+      galleryInitialIndex: this.state.galleryInitialIndex,
+    };
+    if (this.props.renderChildImageViewer) {
+      return this.props.renderChildImageViewer(image);
+    }
+    return null;
+  }
+
   render() {
     let Injectant;
     const injectantProps = {};
@@ -269,7 +280,7 @@ export default class CameraRollGallery extends React.PureComponent {
                     onPageLongPress={this.props.onPageLongPress}
                     renderPageHeader={this.props.renderPageHeader}
                     renderPageFooter={this.props.renderPageFooter}
-                    renderChild={this.props.renderChildImageViewer}
+                    renderChild={this.renderChildImageViewer}
 
                     onDoubleTapConfirmed={this.props.onDoubleTapConfirmed}
                     onDoubleTapStartReached={this.props.onDoubleTapStartReached}
