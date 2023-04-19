@@ -30,6 +30,7 @@ export default class ImageViewer extends React.PureComponent {
     onPageLongPress: PropTypes.func,
     renderPageHeader: PropTypes.func,
     renderPageFooter: PropTypes.func,
+    renderChild: PropTypes.func,
 
     onDoubleTapConfirmed: PropTypes.func,
     onDoubleTapStartReached: PropTypes.func,
@@ -210,6 +211,7 @@ export default class ImageViewer extends React.PureComponent {
           }}
           onEndReachedThreshold={this.props.onEndReachedThreshold}
         />
+        {this.props.renderChild && this.props.renderChild()}
         {
           renderPageFooter &&
           <Footer
@@ -308,6 +310,7 @@ export default class ImageViewer extends React.PureComponent {
           }}
           onEndReachedThreshold={this.props.onEndReachedThreshold}
         />
+        {this.props.renderChild && this.props.renderChild()}
         {
           renderPageFooter &&
           <Footer
