@@ -179,7 +179,7 @@ export default class CameraRollGallery extends React.PureComponent {
 
   renderChildImageViewer = () => {
     const image = {
-      imageId: this.state.imageId,
+      id: this.state.imageId,
       galleryInitialIndex: this.state.galleryInitialIndex,
     };
     if (this.props.renderChildImageViewer) {
