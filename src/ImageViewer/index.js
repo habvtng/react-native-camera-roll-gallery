@@ -7,7 +7,7 @@ import DefaultHeader from "./DefaultHeader";
 import Header from "./Header";
 import Footer from "./Footer";
 
-export default class ImageViewer extends React.PureComponent {
+export default class ImageViewer extends React.Component {
   static propTypes = {
     images: PropTypes.array.isRequired,
     imageId: PropTypes.string.isRequired,
