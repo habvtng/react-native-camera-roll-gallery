@@ -146,7 +146,12 @@ export default class CameraRollGallery extends React.PureComponent {
 
   openImageViewer = async (imageId, index) => {
     await this.setState({ displayImageViewer: true, imageId, galleryInitialIndex: index });
-    this.props.onOpenImageViewer && this.props.onOpenImageViewer({imageId, galleryInitialIndex: index});
+    let lst = this.state.resolvedData.filter((img) => img.id === imageId);
+    let image = {id: imageId, galleryInitialIndex: index};
+    if (lst.length > 0) {
+      image = lst[0];
+    }
+    this.props.onOpenImageViewer && this.props.onOpenImageViewer(image);
   }
 
   closeImageViewer = () => {
@@ -178,11 +183,15 @@ export default class CameraRollGallery extends React.PureComponent {
   }
 
   renderChildImageViewer = () => {
-    const image = {
+    let image = {
       id: this.state.imageId,
       galleryInitialIndex: this.state.galleryInitialIndex,
     };
     if (this.props.renderChildImageViewer) {
+      let lst = this.state.resolvedData.filter((img) => img.id === this.state.imageId);
+      if (lst.length > 0) {
+        image = lst[0];
+      }
       return this.props.renderChildImageViewer(image);
     }
     return null;
